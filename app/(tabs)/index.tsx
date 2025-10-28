@@ -13,7 +13,6 @@ export default function TabOneScreen() {
   const { score, increment, load } = useScoreStore();
   const player = useAudioPlayer(audioSource);
 
-
   useEffect(() => {
     load();
   }, []);
@@ -39,6 +38,7 @@ export default function TabOneScreen() {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
           player.seekTo(0);
           player.play();
+          
           }}
         >
 

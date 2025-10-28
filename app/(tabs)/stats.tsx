@@ -5,7 +5,6 @@ import React, { useEffect } from 'react';
 import { useScoreStore } from '../store/useScoreStore';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-
 export default function TabTwoScreen() {
 const { lifetimeScore, reset, load } = useScoreStore();
 
