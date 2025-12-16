@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import cookieImage from '../../assets/images/image.png';
@@ -12,7 +13,10 @@ export default function TabOneScreen() {
       <Text style={styles.title}>Cookie Clicker</Text>
 
       <TouchableOpacity
-        onPress={() => setScore(score + 1)}
+        onPress={() =>{
+          setScore(score + 1)
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+        }}
       >
         <Image source={cookieImage} style={styles.cookieImage} />
         <Text style={styles.cookieText}></Text>
