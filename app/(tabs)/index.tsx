@@ -1,12 +1,16 @@
+import { useAudioPlayer } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import cookieImage from '../../assets/images/image.png';
 
+const audioSource = require('../../assets/Boom.mp3');
+
 
 
 export default function TabOneScreen() {
   const [score, setScore] = useState(0);
+  const player = useAudioPlayer(audioSource);
 
   return (
     <View style={styles.container}>
@@ -16,6 +20,8 @@ export default function TabOneScreen() {
         onPress={() =>{
           setScore(score + 1)
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+          player.seekTo(0);
+          player.play();
         }}
       >
         <Image source={cookieImage} style={styles.cookieImage} />
@@ -54,4 +60,4 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 175,
   }
-});
+})
