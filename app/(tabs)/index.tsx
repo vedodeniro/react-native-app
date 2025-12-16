@@ -1,14 +1,24 @@
-import { StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import cookieImage from '../../assets/images/image.png';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+
 
 export default function TabOneScreen() {
+  const [score, setScore] = useState(0);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.title}>Cookie Clicker</Text>
+
+      <TouchableOpacity
+        onPress={() => setScore(score + 1)}
+      >
+        <Image source={cookieImage} style={styles.cookieImage} />
+        <Text style={styles.cookieText}></Text>
+      </TouchableOpacity>
+
+      <Text style={styles.scoreText}>Cookies: {score}</Text>
     </View>
   );
 }
@@ -20,12 +30,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#ffffffff'
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  cookieText: {
+    fontSize: 10,
+    color: '#ffffffff'
   },
+  scoreText: {
+    marginTop: 20,
+    fontSize: 20,
+    color: '#ffffffff'
+  },
+  cookieImage: {
+    width: 350,
+    height: 350,
+    margin: 10,
+    borderRadius: 175,
+  }
 });
